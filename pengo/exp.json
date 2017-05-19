@@ -1,0 +1,21 @@
+{
+  "name": "pengo",
+  "description": "An empty new project",
+  "slug": "pengo",
+  "privacy": "public",
+  "sdkVersion": "16.0.0",
+  "version": "1.0.0",
+  "orientation": "portrait",
+  "primaryColor": "#7CA9D2",
+  "icon": "./assets/icons/app.png",
+  "loading": {
+    "icon": "./assets/icons/loading.png",
+    "hideExponentText": false
+  },
+  "packagerOpts": {
+    "assetExts": ["ttf", "mp4"]
+  },
+  "ios": {
+    "supportsTablet": true
+  }
+}
