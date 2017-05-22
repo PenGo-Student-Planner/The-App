@@ -73,15 +73,24 @@ const Pengo = TabNavigator({
 }, {
   tabBarOptions: {
     activeTintColor: '#000',
+<<<<<<< HEAD
     inactiveTintColor: '#333',
     pressColor: '#222',
     style: {
       backgroundColor: '#fff',
     }
+=======
+    activeBackgroundColor: '#fff',
+    inactiveTintColor: '#333',
+    inactiveBackgroundColor: '#eee',
+>>>>>>> 4cebb0f108bb497da7772c6377a95cd98ca4f400
   },
   tabBarPosition: 'bottom',
   swipeEnabled: true,
 });
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4cebb0f108bb497da7772c6377a95cd98ca4f400
 Expo.registerRootComponent(Pengo);
