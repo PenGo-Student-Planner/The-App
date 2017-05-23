@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
     height: 26,
   },
   titleContainer: {
-    backgroundColor: '#1B6FD3',
+    backgroundColor: '#4285f4',
     padding: 10,
     flexGrow: 0,
   },
@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
     margin: 10,
     marginBottom: 0,
     borderRadius: 15,
-    backgroundColor: '#1B6FD3',
+    backgroundColor: '#4285f4',
   },
   scrollItemTitle: {
     backgroundColor: '#fff',
@@ -193,7 +193,7 @@ const Pengo = TabNavigator({
     },
     indicatorStyle: {
       height: 5,
-      backgroundColor: '#1B6FD3',
+      backgroundColor: '#4285f4',
     },
   },
   tabBarPosition: 'bottom',
