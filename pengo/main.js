@@ -1,13 +1,15 @@
 import Expo, { Constants } from 'expo';
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button, Image, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, Button, Image, FlatList } from 'react-native';
 import { TabNavigator } from 'react-navigation';
 
 class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { name: 'Samuel', noOfTasks: 5 }
+    var feed = [ { id: 0, name: 'Homework', colour: styles.scrlRed }, { id: 1, name: 'Timetable', colour: styles.scrlBlue }, { id: 2, name: 'Buy Premium!', colour: styles.scrlGold }, { id: 3, name: 'Projects', colour: styles.scrlBlue } ]
+    this.state = { name: 'Samuel', noOfTasks: 5, feedItems: feed }
   }
+
   static navigationOptions = {
     tabBarLabel: 'Feed',
     // Note: By default the icon is only shown on iOS. Search the showIcon option below.
@@ -31,39 +33,18 @@ class HomeScreen extends React.Component {
           </Text>
         </View>
 
-        <ScrollView style={styles.scrollContainer}>
-
-          <View style={styles.scrollItem}>
-            <Text style={styles.scrollItemTitle}>
-              Tasks
-            </Text>
-          </View>
-
-          <View style={styles.scrollItem}>
-            <Text style={styles.scrollItemTitle}>
-              Tasks
-            </Text>
-          </View>
-
-          <View style={styles.scrollItem}>
-            <Text style={styles.scrollItemTitle}>
-              Tasks
-            </Text>
-          </View>
-
-          <View style={styles.scrollItem}>
-            <Text style={styles.scrollItemTitle}>
-              Tasks
-            </Text>
-          </View>
-
-          <View style={styles.scrollItem}>
-            <Text style={styles.scrollItemTitle}>
-              Tasks
-            </Text>
-          </View>
-
-        </ScrollView>
+        <FlatList
+          style={styles.scrollContainer}
+          data={this.state.feedItems}
+          keyExtractor={(item, index) => item.id}
+          renderItem={({item}) =>
+            <View style={[styles.scrollItem, item.colour]}>
+              <Text style={styles.scrollItemTitle} onPress={() => alert('Press detected')}>
+                {item.name}
+              </Text>
+            </View>
+          }
+        />
       </View>
     );
   }
@@ -170,7 +151,16 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     padding: 5,
     borderRadius: 5,
-  }
+  },
+  scrlRed: {
+    backgroundColor: 'red',
+  },
+  scrlBlue: {
+    backgroundColor: '#4285f4',
+  },
+  scrlGold: {
+    backgroundColor: 'gold',
+  },
 });
 
 const Pengo = TabNavigator({
