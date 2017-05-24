@@ -6,7 +6,13 @@ import { TabNavigator } from 'react-navigation';
 class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
-    var feed = [ { id: 0, name: 'Homework', colour: styles.scrlRed }, { id: 1, name: 'Timetable', colour: styles.scrlBlue }, { id: 2, name: 'Buy Premium!', colour: styles.scrlGold }, { id: 3, name: 'Projects', colour: styles.scrlBlue } ]
+    var feed = [
+      { id: 0, name: 'Homework', colour: styles.scrlRed },
+      { id: 1, name: 'Timetable', colour: styles.scrlBlue },
+      { id: 2, name: 'Buy Premium!', colour: styles.scrlGold },
+      { id: 3, name: 'Projects', colour: styles.scrlBlue },
+      { id: 3, name: 'Zen mode', colour: styles.scrlBlue },
+    ]
     this.state = { name: 'Samuel', noOfTasks: 5, feedItems: feed }
   }
 
@@ -103,10 +109,6 @@ const styles = StyleSheet.create({
     marginTop: Constants.statusBarHeight,
     backgroundColor: '#fff',
   },
-  icon: {
-    width: 26,
-    height: 26,
-  },
   titleContainer: {
     backgroundColor: '#4285f4',
     padding: 10,
@@ -188,6 +190,7 @@ const Pengo = TabNavigator({
   },
   tabBarPosition: 'bottom',
   swipeEnabled: true,
+  showIcon: false,
 });
 
 
