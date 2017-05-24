@@ -16,16 +16,7 @@ class HomeScreen extends React.Component {
     this.state = { name: 'Samuel', noOfTasks: 5, feedItems: feed }
   }
 
-  static navigationOptions = {
-    tabBarLabel: 'Feed',
-    // Note: By default the icon is only shown on iOS. Search the showIcon option below.
-    tabBarIcon: ({ tintColor }) => (
-      <Image
-        source={require('./assets/doggo.jpg')}
-        style={[styles.icon, {tintColor: tintColor}]}
-      />
-    ),
-  };
+  static navigationOptions = { tabBarLabel: 'Feed' };
 
   render() {
     return (
@@ -57,15 +48,7 @@ class HomeScreen extends React.Component {
 }
 
 class TaskScreen extends React.Component {
-  static navigationOptions = {
-    tabBarLabel: 'Tasks',
-    tabBarIcon: ({ tintColor }) => (
-      <Image
-        source={require('./assets/doggo.jpg')}
-        style={[styles.icon, {tintColor: tintColor}]}
-      />
-    ),
-  };
+  static navigationOptions = { tabBarLabel: 'Tasks' };
 
   render() {
     return (
@@ -80,15 +63,7 @@ class TaskScreen extends React.Component {
 }
 
 class TimetableScreen extends React.Component {
-  static navigationOptions = {
-    tabBarLabel: 'Timetable',
-    tabBarIcon: ({ tintColor }) => (
-      <Image
-        source={require('./assets/doggo.jpg')}
-        style={[styles.icon, {tintColor: tintColor}]}
-      />
-    ),
-  };
+static navigationOptions = { tabBarLabel: 'Timetable' };
 
   render() {
     return (
