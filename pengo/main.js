@@ -11,7 +11,7 @@ class HomeScreen extends React.Component {
       { id: 1, name: 'Timetable', colour: styles.scrlBlue },
       { id: 2, name: 'Buy Premium!', colour: styles.scrlGold },
       { id: 3, name: 'Projects', colour: styles.scrlBlue },
-      { id: 3, name: 'Zen mode', colour: styles.scrlBlue },
+      { id: 4, name: 'Zen mode', colour: styles.scrlBlue },
     ]
     this.state = { name: 'Samuel', noOfTasks: 5, feedItems: feed }
   }
