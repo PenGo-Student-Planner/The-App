@@ -1,7 +1,46 @@
 import Expo, { Constants } from 'expo';
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button, Image, FlatList } from 'react-native';
+import { Animated, StyleSheet, Text, View, Button, Image, FlatList } from 'react-native';
 import { TabNavigator } from 'react-navigation';
+
+////////////////////////////////
+////////// Animations //////////
+////////////////////////////////
+
+class FadeInView extends React.Component {
+  state = {
+    fadeAnim: new Animated.Value(0),  // Initial value for opacity: 0
+  }
+
+  componentDidMount() {
+    Animated.timing(                  // Animate over time
+      this.state.fadeAnim,            // The animated value to drive
+      {
+        toValue: 1,                   // Animate to opacity: 1 (opaque)
+        duration: 10000,              // Make it take a while
+      }
+    ).start();                        // Starts the animation
+  }
+
+  render() {
+    let { fadeAnim } = this.state;
+
+    return (
+      <Animated.View                 // Special animatable View
+        style={{
+          ...this.props.style,
+          opacity: fadeAnim,         // Bind opacity to animated value
+        }}
+      >
+        {this.props.children}
+      </Animated.View>
+    );
+  }
+}
+
+/////////////////////////////
+////////// Screens //////////
+/////////////////////////////
 
 class HomeScreen extends React.Component {
   constructor(props) {
@@ -102,6 +141,10 @@ class TimetableScreen extends React.Component {
   }
 }
 
+////////////////////////////
+////////// Styles //////////
+////////////////////////////
+
 const styles = StyleSheet.create({
   appContainer: {
     flex: 1,
@@ -138,21 +181,22 @@ const styles = StyleSheet.create({
   scrollItem: {
     flex: 1,
     height: 120,
-    alignItems: 'center',
-    justifyContent: 'center',
-    margin: 10,
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+    margin: 5,
     marginBottom: 0,
-    borderRadius: 15,
+    borderRadius: 5,
     backgroundColor: '#4285f4',
   },
   scrollItemTitle: {
     backgroundColor: '#fff',
-    textAlign: 'center',
     fontSize: 25,
     color: '#333',
     fontWeight: 'bold',
     padding: 5,
-    borderRadius: 5,
+    margin: 1,
+    borderTopLeftRadius: 5,
+    borderBottomRightRadius: 3,
   },
   scrlRed: {
     backgroundColor: 'red',
@@ -164,6 +208,10 @@ const styles = StyleSheet.create({
     backgroundColor: 'gold',
   },
 });
+
+////////////////////////////////
+////////// Navigation //////////
+////////////////////////////////
 
 const Pengo = TabNavigator({
     Home: {
