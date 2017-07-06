@@ -1,6 +1,6 @@
 import Expo, { Constants } from 'expo';
 import React, { Component } from 'react';
-import { Animated, StyleSheet, Text, View, Button, Image, FlatList } from 'react-native';
+import { Animated, StyleSheet, Text, View, Button, Image, FlatList, ToolbarAndroid } from 'react-native';
 import { TabNavigator } from 'react-navigation';
 
 ////////////////////////////////
@@ -17,7 +17,7 @@ class FadeInView extends React.Component {
       this.state.fadeAnim,            // The animated value to drive
       {
         toValue: 1,                   // Animate to opacity: 1 (opaque)
-        duration: 10000,              // Make it take a while
+        duration: 1000,
       }
     ).start();                        // Starts the animation
   }
@@ -28,8 +28,7 @@ class FadeInView extends React.Component {
     return (
       <Animated.View                 // Special animatable View
         style={{
-          ...this.props.style,
-          opacity: fadeAnim,         // Bind opacity to animated value
+          opacity: fadeAnim          // Bind opacity to animated value
         }}
       >
         {this.props.children}
@@ -69,25 +68,20 @@ class HomeScreen extends React.Component {
   render() {
     return (
       <View style={styles.appContainer}>
-        <View style={styles.titleContainer}>
-          <Text style={styles.title}>
-            Hello {this.state.name}
-          </Text>
-          <Text style={styles.subtitle}>
-            You have {this.state.noOfTasks} pieces of work due this week
-          </Text>
-        </View>
+        <ToolbarAndroid title='Feed' />
 
         <FlatList
           style={styles.scrollContainer}
           data={this.state.feedItems}
           keyExtractor={(item, index) => item.id}
           renderItem={({item}) =>
-            <View style={[styles.scrollItem, item.colour]}>
-              <Text style={styles.scrollItemTitle} onPress={() => alert('Press detected')}>
-                {item.name}
-              </Text>
-            </View>
+            <FadeInView>
+              <View style={[styles.scrollItem, item.colour]}>
+                <Text style={styles.scrollItemTitle} onPress={() => alert('Press detected')}>
+                  {item.name}
+                </Text>
+              </View>
+            </FadeInView>
           }
         />
       </View>
